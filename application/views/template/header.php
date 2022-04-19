@@ -32,10 +32,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="<?php echo base_url('home');?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="pasien">Pasien</a>
+          <a class="nav-link" href="#">Pasien</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Tindakan</a>
@@ -48,11 +48,11 @@
           Detail Rawat
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="<?php echo base_url('rawat')?>">Rawat</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url('rawat');?>">Rawat</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Rawat tindakan</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="<?php echo base_url('rawat_obat')?>">Rawat obat</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url('rawat_obat');?>">Rawat obat</a></li>
           </ul>
         </li>
       </ul>
