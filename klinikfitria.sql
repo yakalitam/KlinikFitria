@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2022 at 04:39 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.28
+-- Generation Time: Apr 19, 2022 at 06:43 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,15 @@ CREATE TABLE `obat` (
   `harga` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `obat`
+--
+
+INSERT INTO `obat` (`idobat`, `nama`, `harga`) VALUES
+('TS123', 'Sakit Kelapa', 145000),
+('TS12311', '1244233', 12323),
+('TS123878', 'sdfghjl;kjhjgh', 2147483647);
+
 -- --------------------------------------------------------
 
 --
@@ -41,11 +50,19 @@ CREATE TABLE `obat` (
 
 CREATE TABLE `pasien` (
   `idpasien` varchar(8) NOT NULL,
-  `nama` text NOT NULL,
+  `nama` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
-  `tgllahir` varchar(255) NOT NULL,
-  `notelp` int(255) NOT NULL
+  `tgllahir` date NOT NULL,
+  `notelp` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pasien`
+--
+
+INSERT INTO `pasien` (`idpasien`, `nama`, `alamat`, `tgllahir`, `notelp`) VALUES
+('TS221100', 'Yoga', 'Surakarta', '2000-04-25', '0813431901'),
+('TS222', 'Andi', 'jakarta', '1999-04-29', '082255111');
 
 -- --------------------------------------------------------
 
@@ -63,6 +80,14 @@ CREATE TABLE `rawat` (
   `kurang` int(8) NOT NULL,
   `idpasien` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rawat`
+--
+
+INSERT INTO `rawat` (`idrawat`, `tglrawat`, `totaltindakan`, `totalobat`, `totalharga`, `uangmuka`, `kurang`, `idpasien`) VALUES
+('TS112', '2014-05-19', 1, 1, 2, 1000000, -999998, 'TS222'),
+('TS11200', '2022-04-19', 200000, 2000000, 2200000, 10000, 2190000, 'TS222');
 
 -- --------------------------------------------------------
 
@@ -89,8 +114,15 @@ CREATE TABLE `rawattindakan` (
   `idrawat` varchar(8) NOT NULL,
   `idtindakan` varchar(8) NOT NULL,
   `namadokter` text NOT NULL,
-  `harga` int(8) NOT NULL
+  `biaya` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rawattindakan`
+--
+
+INSERT INTO `rawattindakan` (`idrawattindakan`, `idrawat`, `idtindakan`, `namadokter`, `biaya`) VALUES
+('TS123', 'TS11200', 'TS1092', 'Dr. Siti Aminah, Sp. M', 9100000);
 
 -- --------------------------------------------------------
 
@@ -100,9 +132,26 @@ CREATE TABLE `rawattindakan` (
 
 CREATE TABLE `tindakan` (
   `idtindakan` varchar(8) NOT NULL,
-  `namatindakan` text NOT NULL,
+  `namatindakan` varchar(255) NOT NULL,
   `biaya` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tindakan`
+--
+
+INSERT INTO `tindakan` (`idtindakan`, `namatindakan`, `biaya`) VALUES
+('TS00111', 'Operasi Usus Buntu', 35000000),
+('TS002', 'Operasi Mata Anak', 150000000),
+('TS0021', 'Operasi Mata', 150000000),
+('TS0910', 'Terapi Jalan', 800000),
+('TS10', 'Suntik Parises', 9000000),
+('TS1000', 'Terapi Asam Lambung', 900000),
+('TS1092', 'Operasi Usus Sapi', 9100000),
+('TS111239', 'Puasa Mutih', 1999208),
+('TS1134', 'Medical Check-Up', 500000),
+('TS11343', 'Laser Lambung', 1290000),
+('TS19431', 'Puasa Sayur', 11200000);
 
 --
 -- Indexes for dumped tables

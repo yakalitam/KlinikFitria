@@ -52,7 +52,7 @@ class Pasien extends CI_Controller
     {
         if ($this->modelPasien->update($this->input->post(), $id)) {
             $this->session->set_flashdata('pesan', 'Data berhasil diubah');
-            redirect(base_url('tindakan'));
+            redirect(base_url('pasien'));
         }
     }
     // fungsi ini digunakan untuk menghapus data yang ada pada database
