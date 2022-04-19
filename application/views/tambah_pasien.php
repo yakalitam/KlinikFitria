@@ -1,4 +1,3 @@
-<?php $this->load->view('template/header'); ?>
 <title>Tambah Pasien</title>
 
 <div class="container mt-3">
@@ -11,7 +10,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-             <form action="tambah_pasien_proses" method="post" enctype="multipart/form-data">
+                            <form action="tambah_pasien_proses" method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="ID_Pasien" class="form-label">ID Pasien</label>
                                     <input type="text" name="idpasien" class="form-control" id="idpasien">
@@ -34,9 +33,9 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>  
-            
-          </div>
+                            </form>
+
+                        </div>
                     </div>
 
                 </div>
@@ -44,6 +43,3 @@
         </div>
     </div>
 </div>
-
-
-<?php $this->load->view('template/footer'); ?>
