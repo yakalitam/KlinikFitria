@@ -73,5 +73,6 @@
         // script untuk menampilkan table dengan library datatables
         $(document).ready(function() {
             $('#Ttindakan').DataTable();
+            responsive: true
         });
     </script>

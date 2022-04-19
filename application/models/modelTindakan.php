@@ -3,7 +3,7 @@ class modelTindakan extends CI_Model
 {
     function getData()
     {
-        return $this->db->get('tindakan')->result();
+        return $this->db->get('tindakan')->result_array();
     }
 
     function search($keyword = null)
