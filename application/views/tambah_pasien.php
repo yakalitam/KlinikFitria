@@ -1,4 +1,3 @@
-<?php $this->load->view('template/header'); ?>
 <title>Tambah Pasien</title>
 
 <div class="container mt-3">
@@ -21,12 +20,12 @@
                                     <input type="text" name="nama" class="form-control" id="nama">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Alamat" class="form-label">Alamat</label>
-                                    <input type="text" name="alamat" class="form-control" id="alamat">
-                                </div>
-                                <div class="mb-3">
                                     <label for="Tgl_Lahir" class="form-label">Tanggal Lahir</label>
                                     <input type="date" name="tgllahir" class="form-control" id="tgllahir">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Alamat" class="form-label">Alamat</label>
+                                    <input type="text" name="alamat" class="form-control" id="alamat">
                                 </div>
                                 <div class="mb-3">
                                     <label for="No_Telp" class="form-label">No Telepon</label>

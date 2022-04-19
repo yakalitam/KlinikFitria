@@ -37,10 +37,10 @@
             <a class="nav-link active" aria-current="page" href="<?php echo base_url('home'); ?>">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pasien</a>
+            <a class="nav-link" href="<?php echo base_url('pasien'); ?>">Pasien</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tindakan</a>
+            <a class="nav-link" href="<?php echo base_url('tindakan'); ?>">Tindakan</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('obat'); ?>">Obat</a>
@@ -54,7 +54,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Rawat tindakan</a></li>
+              <li><a class="dropdown-item" href="<?php echo base_url('rawat_tindakan'); ?>">Rawat tindakan</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
