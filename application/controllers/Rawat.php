@@ -23,10 +23,8 @@ public function __construct()
     }     
 
     public function cetak_pdf(){
-        $id = $_GET['id'];
-        $data['rawat'] = $this->Rawat_model->get_single_row_rawat($id);
-     $this->load->view('cetak_pdf',$data);
-           }
+     $this->load->view('cetak_pdf');
+    }
 
  public function tambah_rawat_proses(){
     $idrawat = $this->input->post('idrawat');

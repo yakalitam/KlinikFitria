@@ -15,7 +15,6 @@
 
         $pdf->Cell(15,15,'ID',1,0,'C');
         $pdf->Cell(20,15,'ID Pasien',1,0,'C');
-        // $pdf->Cell(60,15,'Nama Pasien',1,0,'C');
         $pdf->Cell(30,15,'Tanggal Rawat',1,0,'C');
         $pdf->Cell(30,15,'Total Tindakan',1,0,'C');
         $pdf->Cell(30,15,'Total Obat',1,1,'C');
@@ -27,14 +26,11 @@
         foreach ($data as $row){
             $pdf->Cell(15,15,$row->idrawat,1,0,'C');
             $pdf->Cell(20,15,$row->idpasien,1,0,'C');
-            // $pdf->Cell(60,15,$row->nama,1,0,'C');
             $pdf->Cell(30,15,$row->tglrawat,1,0,'C');
             $pdf->Cell(30,15,"Rp ".number_format($row->totaltindakan, 0, ".", "."),1,0,'C');
             $pdf->Cell(30,15,"Rp ".number_format($row->totalobat, 0, ".", "."),1,1,'C');
         }
-
-
-
+$pdf->Cell(10,7,'',0,1);
         $pdf->SetFont('Arial','I',12);
         $pdf->Cell(0,12,'* Biaya Pengeluaran',0,1,'L');
         $pdf->Cell(10,1,'',0,1);
