@@ -21,8 +21,7 @@
       <?php echo $this->session->flashdata('msg_update_rawat'); ?>
       <?php echo $this->session->flashdata('msg_del_rawat'); ?>
 
-  <a href="<?= base_url('rawat/tambah_rawat');?>" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp Tambah</a>&nbsp
-     <a href="<?= base_url('rawat/cetak_pdf');?>" type="button" class="btn btn-primary"><i class="fa fa-download"></i>&nbsp Cetak Nota</a>
+  <a href="<?= base_url('rawat/tambah_rawat');?>" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp Tambah</a>   
  <hr>
                     <thead>
                     <tr style="text-align:center;">
@@ -53,9 +52,10 @@
                 <td style="background-color:red; color:white;"><?php echo $row->kurang?></td>
                 <td><?php echo $row->nama?></td>
                 <td>
-                    <a href="rawat/edit_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>&nbsp Edit</a>  
-                    &nbsp&nbsp<a href="rawat/delete_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" title="delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa fa-trash"></i>&nbspDelete</a>
-                </td>
+                <a href="rawat/edit_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>&nbsp Edit</a>  
+         <hr> <a href="rawat/delete_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" title="delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa fa-trash"></i>&nbspDelete</a>
+              <hr> <a href="rawat/cetak_pdf?id=<?php echo htmlspecialchars($row->idrawat) ?>" type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp Cetak Nota</a>
+              </td>
       </tr>
                 <?php }?>
 
