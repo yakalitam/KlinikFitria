@@ -1,4 +1,5 @@
 <?php $this->load->view('template/header');?>
+<title>Dashboard</title>
 
 <div class="col-sm-13">
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
