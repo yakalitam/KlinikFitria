@@ -54,7 +54,7 @@
                   <td>
                     <a href="rawat/edit_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>&nbsp Edit</a>
                     <hr> <a href="rawat/delete_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" title="delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa fa-trash"></i>&nbspDelete</a>
-                    <hr> <a href="rawat/cetak_pdf?id=<?php echo htmlspecialchars($row->idrawat) ?>" type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp Cetak</a>
+                    <hr> <a href="rawat/cetak?id=<?php echo htmlspecialchars($row->idrawat) ?>" type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp Cetak</a>
                   </td>
                 </tr>
               <?php } ?>

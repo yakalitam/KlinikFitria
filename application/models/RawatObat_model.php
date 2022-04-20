@@ -44,6 +44,13 @@ $this->db->select('*');
  return $query->result();
 }
 
+  public function get_rawat_detail($id)
+     {
+          $this->db->where('idrawat', $id);
+        return $this->db->get('rawatobat')->row_array();
+     }
+
+
     public function get_single_row_rawatobat($idrawatobat)
      {
           $query = $this->db->get_where('rawatobat', array('idrawatobat' => $idrawatobat));

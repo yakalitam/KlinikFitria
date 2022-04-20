@@ -8,6 +8,8 @@ public function __construct()
     {
         parent::__construct();
         $this->load->model("Rawat_model");
+        $this->load->model("RawatObat_model");
+        $this->load->model("modelRawatTindakan");
         $this->load->library(array('cetak_pdf','form_validation','session'));
        
     }
@@ -22,8 +24,12 @@ public function __construct()
         $this->load->view('tambah_rawat',$data);
     }     
 
-    public function cetak_pdf(){
-     $this->load->view('cetak_pdf');
+    public function cetak(){
+      $id= $_GET['id'];
+      $data['rawat'] = $this->Rawat_model->get_single_row_rawat($id);
+      $data['rawattindakan'] = $this->modelRawatTindakan->get_rawat_detail($id);
+      $data['rawatobat'] = $this->RawatObat_model->get_rawat_detail($id);
+     $this->load->view('cetak_pdf',$data);
     }
 
  public function tambah_rawat_proses(){

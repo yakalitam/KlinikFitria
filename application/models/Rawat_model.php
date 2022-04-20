@@ -37,14 +37,14 @@ $this->db->select('*');
     }  
 
 
-    public function get_single_row_rawat($idrawat)
+    public function get_single_row_rawat($id)
      {
           $this->db->select('*');
           $this->db->join('pasien', 'rawat.idpasien=pasien.idpasien');
-          $query = $this->db->get_where('rawat', array('idrawat' => $idrawat));
-          return $query->row();
+          $query = $this->db->get_where('rawat', array('idrawat' => $id));
+          return $query->row_array();
      }
-     
+
       public function delete_rawat($idrawat)
   {
     return $this->db->delete('rawat', array('idrawat' => $idrawat));
