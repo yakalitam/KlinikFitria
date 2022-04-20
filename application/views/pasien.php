@@ -23,6 +23,7 @@
             <div class="col">
                 <a class="btn btn-sm btn-success" href="<?php echo base_url('Pasien/addT') ?>">
                     <b>+ Tambah Data Pasien</b>
+                <a href="<?php echo base_url('Pasien/print_pasien')?>" class="btn btn-success">Print</a>
                 </a>
             </div>
         </div>
