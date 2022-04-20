@@ -33,7 +33,6 @@
                 <th style="background-color:blue; color:white;">Total Harga</th>
                 <th>Uang Muka</th>
                 <th style="background-color:red; color:white;">Kekurangan</th>
-                <th>Nama Pasien</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -50,7 +49,6 @@
                   <td style="background-color:blue; color:white;"><?php echo $row->totalharga ?></td>
                   <td><?php echo $row->uangmuka ?></td>
                   <td style="background-color:red; color:white;"><?php echo $row->kurang ?></td>
-                  <td><?php echo $row->nama ?></td>
                   <td>
                     <a href="rawat/edit_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>&nbsp Edit</a>
                     <hr> <a href="rawat/delete_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" title="delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa fa-trash"></i>&nbspDelete</a>

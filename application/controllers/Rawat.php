@@ -41,8 +41,9 @@ public function __construct()
     $uangmuka = $this->input->post('uangmuka');
     $kurang = $this->input->post('kurang');
     $idpasien = $this->input->post('idpasien');
-     
-$data = [
+    
+    
+    $data = [
       'idrawat'     => $idrawat,
       'tglrawat'     => $tglrawat,
       'totaltindakan'     => $totaltindakan,
@@ -52,7 +53,8 @@ $data = [
       'kurang'     => $kurang=$totalharga-$uangmuka,
       'idpasien'     => $idpasien
     ];
-
+    
+    
     //check id buku sdh ada atau blm
     $rawat_exist = $this->Rawat_model->get_single_row_perawatan($idrawat);
 
@@ -96,6 +98,8 @@ $data = [
 
 
      public function edit_rawat_proses(){
+
+
     $idrawat = $this->input->post('idrawat');
     $tglrawat = $this->input->post('tglrawat');
     $totaltindakan = $this->input->post('totaltindakan');
@@ -105,13 +109,6 @@ $data = [
     $kurang = $this->input->post('kurang');
     $idpasien = $this->input->post('idpasien');
 
-    // $this->db->where('idrawat',$idrawat);
-    // $this->db->select_sum('biaya');
-    // $totaltindakan = $this->db->get('rawattindakan')->row_array();
-
-    // $this->db->where('idrawat',$idrawat);
-    // $this->db->select_sum('harga');
-    // $totalobat = $this->db->get('rawatobat')->row_array();
 
     $data_lama = $this->Rawat_model->get_single_row_perawatan($idrawat);
 
@@ -119,16 +116,19 @@ $data = [
     || $data_lama->totalobat != $totalobat || $data_lama->totalharga != $totalharga || $data_lama->uangmuka != $uangmuka
     || $data_lama->kurang != $kurang || $data_lama->idpasien != $idpasien 
     ) {
-            
+
+      
       $data = [
-      'idrawat'     => $idrawat,
-      'tglrawat'     => $tglrawat,
-      'totaltindakan'     => $totaltindakan,
-      'totalobat'     => $totalobat,
-      'totalharga'     => $totalharga=$totalobat+$totaltindakan,
-      'uangmuka'     => $uangmuka,
-      'kurang'     => $kurang=$totalharga-$uangmuka
+        'idrawat'     => $idrawat,
+        'tglrawat'     => $tglrawat,
+        'totaltindakan'     => $totaltindakan,
+        'totalobat'     => $totalobat,
+        'totalharga'     => $totalharga=$totalobat+$totaltindakan,
+        'uangmuka'     => $uangmuka,
+        'kurang'     => $kurang=$totalharga-$uangmuka
       ];
+
+
       $this->Rawat_model->update_rawat($data, $idrawat);
       $this->index();
       $this->session->set_flashdata('msg_update_rawat', '<div class="alert alert-success alert-dismissible fade show" role="alert">Data rawat berhasil Diupdate<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');

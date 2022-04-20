@@ -36,7 +36,7 @@
 
                             <br>
                             <h4 style="color:black;">Biaya Perawatan</h4>
-                                <!-- <div class="form-group row">
+                                <div class="form-group row">
                     <div class="col-sm-4">  
                                 <div class="mb-3">
                                     <label for="Total_Tindakan" class="form-label">Total Tindakan</label>
@@ -51,13 +51,13 @@
                                 </div>
                                 </div>
 
-                    <div class="col-sm-4">   -->
+                    <div class="col-sm-4">  
                                 <div class="mb-3">
                                     <label for="Uang_Muka" class="form-label">Uang Muka</label>
                                     <input value ="<?php echo htmlspecialchars($rawat->uangmuka); ?>"type="number" min="0" name="uangmuka" class="form-control" id="uangmuka">
                                 </div>
-                                <!-- </div>
-                                </div> -->
+                                </div>
+                                </div>
                                 
                                 <input type="hidden" name="idrawat" id="idrawat" value=<?php echo htmlspecialchars($rawat->idrawat); ?>>
                                 <button type="submit" class="btn btn-primary">Submit</button>
