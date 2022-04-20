@@ -35,7 +35,7 @@
                                 <td><?php echo $item['idrawat'] ?></td>
                                 <td><?php echo $item['idtindakan'] ?></td>
                                 <td><?php echo $item['namadokter'] ?></td>
-                                <td><?php echo $item['biaya'] ?></td>
+                                <td><?php echo $item['harga'] ?></td>
 
                                 <td>
                                     <a href="Rawat_Tindakan/edit/<?php echo $item['idrawattindakan']; ?>" class="btn btn-warning">Edit</a>
