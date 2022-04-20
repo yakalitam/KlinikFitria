@@ -11,6 +11,8 @@ class Pasien extends CI_Controller
     public function index()
     {
         $this->load->model('modelPasien');
+        $data['listpasien'] = $this->modelPasien->get_pasien();
+        $this->load->view('pasien',$data);
         $keyword = $this->input->get('keyword');
         $data = $this->modelPasien->search($keyword);
         $data = array(
@@ -60,5 +62,11 @@ class Pasien extends CI_Controller
     {
         $this->modelPasien->delete($a);
         redirect(base_url('pasien'));
+    }
+
+    public function print_pasien()
+    {
+        $data['listpasien'] = $this->modelPasien->get_pasien();
+		$this->load->view('printpasien',$data);
     }
 }

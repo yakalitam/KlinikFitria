@@ -1,6 +1,12 @@
 <?php
 class modelPasien extends CI_Model
-{
+{   
+    function get_pasien()
+    {
+        $query = $this->db->get('pasien');
+        return $query->result();
+    }
+    
     function getData()
     {
         return $this->db->get('pasien')->result();
@@ -52,5 +58,11 @@ class modelPasien extends CI_Model
     {
         $this->db->where('idpasien', $a);
         return $this->db->delete('pasien');
+    }
+
+    public function print_pasien($a)
+    {
+        $this->db->where('idpasien', $a);
+        return $this->db->get('pasien')->row_array();
     }
 }

@@ -24,7 +24,7 @@
                 <a class="btn btn-sm btn-success" href="<?php echo base_url('Pasien/addT') ?>">
                     <b>+ Tambah Data Pasien</b></a>
                 <a class="btn btn-sm btn-success" href="<?php echo base_url('Pasien/print_pasien') ?>">
-                    <b>+ Tambah Data Pasien</b></a>
+                    <b>+ Print Data Pasien</b></a>
             </div>
         </div>
 
