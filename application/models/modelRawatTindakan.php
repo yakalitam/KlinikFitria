@@ -18,7 +18,7 @@ class modelRawatTindakan extends CI_Model
           $this->db->select('*');
           $this->db->join('tindakan', 'tindakan.idtindakan=rawattindakan.idtindakan');
           $this->db->where('idrawat', $id);
-        return $this->db->get('rawattindakan')->row_array();
+        return $this->db->get('rawattindakan')->result_array();
      }
 
     function insert_rawat_tindakan($a)
