@@ -39,6 +39,8 @@ $this->db->select('*');
 
     public function get_single_row_rawat($idrawat)
      {
+          $this->db->select('*');
+          $this->db->join('pasien', 'rawat.idpasien=pasien.idpasien');
           $query = $this->db->get_where('rawat', array('idrawat' => $idrawat));
           return $query->row();
      }
