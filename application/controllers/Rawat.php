@@ -54,7 +54,7 @@ $data = [
     ];
 
     //check id buku sdh ada atau blm
-    $rawat_exist = $this->Rawat_model->get_single_row_rawat($idrawat);
+    $rawat_exist = $this->Rawat_model->get_single_row_perawatan($idrawat);
 
     //jika bernilai TRUE
     if (!isset($rawat_exist)) {
@@ -90,7 +90,7 @@ $data = [
 
         public function edit_rawat(){
         $id = $_GET['id'];
-        $data['rawat'] = $this->Rawat_model->get_single_row_rawat($id);
+        $data['rawat'] = $this->Rawat_model->get_single_row_perawatan($id);
         $this->load->view('edit_rawat',$data);
     }
 
@@ -105,7 +105,7 @@ $data = [
     $kurang = $this->input->post('kurang');
     $idpasien = $this->input->post('idpasien');
 
-    $data_lama = $this->Rawat_model->get_single_row_rawat($idrawat);
+    $data_lama = $this->Rawat_model->get_single_row_perawatan($idrawat);
 
     if ($data_lama->idrawat != $idrawat || $data_lama->tglrawat != $tglrawat  || $data_lama->totaltindakan != $totaltindakan 
     || $data_lama->totalobat != $totalobat || $data_lama->totalharga != $totalharga || $data_lama->uangmuka != $uangmuka

@@ -33,9 +33,9 @@
         $pdf->SetFont('Arial','',10);
        
             $pdf->Cell(45,15,$rawat['tglrawat'],1,0,'C');
-            $pdf->Cell(45,15,'',1,0,'C');
-            $pdf->Cell(45,15,'',1,0,'C');
-            $pdf->Cell(45,15,$rawattindakan['totaltindakan'],1,1,'C');
+            $pdf->Cell(45,15,$rawattindakan['namatindakan'],1,0,'C');
+            $pdf->Cell(45,15,$rawattindakan['namadokter'],1,0,'C');
+            $pdf->Cell(45,15,$rawattindakan['harga'],1,1,'C');
         
 
         $pdf->Cell(10,7,'',0,1);
@@ -68,7 +68,7 @@
         $pdf->Cell(10,1,'',0,1);
 
         $pdf->SetFont('Arial','',10);
-        $pdf->Cell(0,7,"Total Tindakan (Rp)      :  ".number_format($rawattindakan['totaltindakan'], 0, ".", "."),0,1,'L');
+        $pdf->Cell(0,7,"Total Tindakan (Rp)      :  ".number_format($rawattindakan['harga'], 0, ".", "."),0,1,'L');
         $pdf->Cell(0,7,"Total Obat (Rp)             :  ".number_format($rawatobat['totalobat'], 0, ".", "."),0,1,'L');
         $pdf->Cell(0,7,"Total Harga (Rp)       :  ".number_format($rawat['totalharga'], 0, ".", "."),0,1,'L');
         $pdf->Cell(0,7,"Uang Muka (Rp)       :  ".number_format($rawat['uangmuka'], 0, ".", "."),0,1,'L');

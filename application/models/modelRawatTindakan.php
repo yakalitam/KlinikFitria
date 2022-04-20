@@ -15,6 +15,8 @@ class modelRawatTindakan extends CI_Model
 
     public function get_rawat_detail($id)
      {
+          $this->db->select('*');
+          $this->db->join('tindakan', 'tindakan.idtindakan=rawattindakan.idtindakan');
           $this->db->where('idrawat', $id);
         return $this->db->get('rawattindakan')->row_array();
      }

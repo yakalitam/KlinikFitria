@@ -36,6 +36,11 @@ $this->db->select('*');
           ->result();
     }  
 
+ public function get_single_row_perawatan($idrawat)
+     {
+          $query = $this->db->get_where('rawat', array('idrawat' => $idrawat));
+          return $query->row();
+     }
 
     public function get_single_row_rawat($id)
      {
