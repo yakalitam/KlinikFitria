@@ -10,12 +10,13 @@
         $pdf->Cell(10,7,'',0,1);
        
         $pdf->SetFont('Arial','',10);
-        $id = $_GET['id'];
+         $id = $_GET['id'];
         $data['rawat'] = $this->Rawat_model->get_single_row_rawat($id);
         foreach ($data as $row){
         $pdf->Cell(0,7,'No Rawat            : '.$row->idrawat,0,1,'L');
         $pdf->Cell(0,7,'Tanggal Rawat   : '.$row->tglrawat,0,1,'L');
         $pdf->Cell(0,7,'No Pasien           : '.$row->idpasien,0,1,'L');
+
         $pdf->Cell(10,7,'',0,1);
      }
 
@@ -30,8 +31,8 @@
       
 
         $pdf->SetFont('Arial','',10);
-        $id = $_GET['id'];
-        $data['rawat'] = $this->Rawat_model->get_single_row_rawat($id);
+        // $id = $_GET['id'];
+        // $data['rawat'] = $this->Rawat_model->get_single_row_rawat($id);
         foreach ($data as $row){
             $pdf->Cell(60,15,$row->tglrawat,1,0,'C');
             $pdf->Cell(60,15,"Rp ".number_format($row->totaltindakan, 0, ".", "."),1,0,'C');
