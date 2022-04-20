@@ -51,9 +51,14 @@
       
 
         $pdf->SetFont('Arial','',10);
-            $pdf->Cell(45,15,$rawat['tglrawat'],1,0,'C');
+        $pdf->Cell(45,15,$rawat['tglrawat'],1,0,'C');
+        if(isset($rawatobat['idobat'])):
             $pdf->Cell(45,15,$rawatobat['idobat'],1,0,'C');
             $pdf->Cell(45,15,$rawatobat['jumlah'],1,0,'C');
+        else:
+            $pdf->Cell(45,15,null,1,0,'C');
+            $pdf->Cell(45,15,null,1,0,'C');
+        endif;
             $pdf->Cell(45,15,$rawatobat['totalobat'],1,1,'C');
         
       
