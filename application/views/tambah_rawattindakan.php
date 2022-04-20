@@ -4,7 +4,6 @@
             <div class="card-body">
 
                 <h5 class="card-title">Rawat Tindakan</h5>
-                <h6 class="card-subtitle mb-2 text-muted">lipsum</h6>
 
                 <form method="POST" action="<?php echo base_url('Rawat_Tindakan/insert') ?>">
 
@@ -35,13 +34,12 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="card">
             <div class="card-body">
 
-                <h5 class="card-title">Rawat Tindakan</h5>
-                <h6 class="card-subtitle mb-2 text-muted">lipsum</h6>
-                <table class="table">
+                <h5 class="card-title">List Dokter</h5>
+                  <table class="table">
                     <thead>
                         <th>ID Dokter</th>
                         <th>Nama Dokter</th>

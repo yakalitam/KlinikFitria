@@ -105,6 +105,14 @@ $data = [
     $kurang = $this->input->post('kurang');
     $idpasien = $this->input->post('idpasien');
 
+    // $this->db->where('idrawat',$idrawat);
+    // $this->db->select_sum('biaya');
+    // $totaltindakan = $this->db->get('rawattindakan')->row_array();
+
+    // $this->db->where('idrawat',$idrawat);
+    // $this->db->select_sum('harga');
+    // $totalobat = $this->db->get('rawatobat')->row_array();
+
     $data_lama = $this->Rawat_model->get_single_row_perawatan($idrawat);
 
     if ($data_lama->idrawat != $idrawat || $data_lama->tglrawat != $tglrawat  || $data_lama->totaltindakan != $totaltindakan 
@@ -113,6 +121,7 @@ $data = [
     ) {
             
       $data = [
+      'idrawat'     => $idrawat,
       'tglrawat'     => $tglrawat,
       'totaltindakan'     => $totaltindakan,
       'totalobat'     => $totalobat,

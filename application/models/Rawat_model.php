@@ -24,7 +24,7 @@ $this->db->select('*');
  public function get_rawat()
     {
     $query = $this->db->query("select * from rawat");
-    return $query->result();
+    return $query->result_array();
     }
 
    

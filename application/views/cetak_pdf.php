@@ -24,17 +24,17 @@
         $pdf->Cell(10,1,'',0,1);
 
         $pdf->SetFont('Arial','B',10);
-        $pdf->Cell(45,15,'TINDAKAN',1,0,'C');
-        $pdf->Cell(45,15,'DOKTER',1,0,'C');
-        $pdf->Cell(45,15,'BIAYA',1,1,'C');
+        $pdf->Cell(45,10,'TINDAKAN',1,0,'C');
+        $pdf->Cell(45,10,'DOKTER',1,0,'C');
+        $pdf->Cell(45,10,'BIAYA',1,1,'C');
       
 
         $pdf->SetFont('Arial','',10);
        
         foreach($rawattindakan as $row){
-            $pdf->Cell(45,15,$row['idtindakan'],1,0,'C');
-            $pdf->Cell(45,15,$row['namadokter'],1,0,'C');
-            $pdf->Cell(45,15,$row['harga'],1,1,'C');
+            $pdf->Cell(45,10,$row['idtindakan'],1,0,'C');
+            $pdf->Cell(45,10,$row['namadokter'],1,0,'C');
+            $pdf->Cell(45,10,$row['harga'],1,1,'C');
         }
 
         $pdf->Cell(10,7,'',0,1);
@@ -44,22 +44,22 @@
 
         $pdf->SetFont('Arial','B',10);
 
-        $pdf->Cell(45,15,'KODE',1,0,'C');
-        $pdf->Cell(45,15,'JUMLAH',1,0,'C');
-        $pdf->Cell(45,15,'HARGA',1,1,'C');
+        $pdf->Cell(45,10,'KODE',1,0,'C');
+        $pdf->Cell(45,10,'JUMLAH',1,0,'C');
+        $pdf->Cell(45,10,'HARGA',1,1,'C');
       
 
         $pdf->SetFont('Arial','',10);
 
         foreach($rawatobat as $row){
         if(isset($row['idobat'])):
-            $pdf->Cell(45,15,$row['idobat'],1,0,'C');
-            $pdf->Cell(45,15,$row['jumlah'],1,0,'C');
+            $pdf->Cell(45,10,$row['idobat'],1,0,'C');
+            $pdf->Cell(45,10,$row['jumlah'],1,0,'C');
         else:
-            $pdf->Cell(45,15,null,1,0,'C');
-            $pdf->Cell(45,15,null,1,0,'C');
+            $pdf->Cell(45,10,null,1,0,'C');
+            $pdf->Cell(45,10,null,1,0,'C');
         endif;
-            $pdf->Cell(45,15,$row['totalobat'],1,1,'C');
+            $pdf->Cell(45,10,$row['totalobat'],1,1,'C');
     }
       
         $pdf->Cell(10,7,'',0,1);

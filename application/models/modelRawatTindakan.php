@@ -31,7 +31,7 @@ class modelRawatTindakan extends CI_Model
             'idrawat' => $a['idrawat'],
             'idtindakan' => $a['idtindakan'],
             'namadokter' => $a['namadokter'],
-            'biaya' => $tindakan['biaya']
+            'harga' => $tindakan['biaya']
         ];
 
         return $this->db->insert('rawattindakan', $data);
@@ -47,7 +47,7 @@ class modelRawatTindakan extends CI_Model
             'idrawat' => $a['idrawat'],
             'idtindakan' => $a['idtindakan'],
             'namadokter' => $a['namadokter'],
-            'biaya' => $tindakan['biaya']
+            'harga' => $tindakan['biaya']
         ];
 
         $this->db->where('idrawattindakan', $id);

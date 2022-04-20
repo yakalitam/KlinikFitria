@@ -46,7 +46,7 @@
                   <td><?php echo $row->idpasien ?></td>
                   <td><?php echo $row->tglrawat ?></td>
                   <td><?php echo $row->totaltindakan ?></td>
-                  <td><?php echo $row->totalobat ?></td>
+                  <td><?php echo $row->totalobat?></td>
                   <td style="background-color:blue; color:white;"><?php echo $row->totalharga ?></td>
                   <td><?php echo $row->uangmuka ?></td>
                   <td style="background-color:red; color:white;"><?php echo $row->kurang ?></td>
