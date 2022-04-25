@@ -1,25 +1,31 @@
-<div class="container mt-4">
-    <div class="row">
-        <div class="card">
-            <div class="card-body">
+<title>Perawatan Tindakan</title>  
 
-                <?php if ($this->session->flashdata('pesan') != '') { ?>
+<div class="container mt-5">
+
+<div class="container-fluid mt-3">
+
+        
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tabel Rawat Tindakan</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                     <a href="<?php echo base_url('Rawat_Tindakan/add') ?>" class="btn btn-success"><i class="fa fa-plus"></i>&nbspTambah</a>&nbsp
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+ <i class="fa fa-eye"></i> Lihat Chart
+</button>
+<hr>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                             <?php if ($this->session->flashdata('pesan') != '') { ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <?php echo $this->session->flashdata('pesan'); ?>
                     </div>
                 <?php } ?>
 
-                <h5 class="card-title">Halaman Rawat-Tindakan</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Data Tindakan per ID Rawat</h6>
-
-                <hr><a href="<?php echo base_url('Rawat_Tindakan/add') ?>" class="btn btn-success">Tambah Data Tindakan-Rawat</a>&nbsp
-                <a href="<?php echo base_url('Rawat_Tindakan/dokter_chart') ?>" class="btn btn-primary"><i class="fa fa-eye"></i>&nbspLihat Chart</a>
-                <hr>
-
-                <table class="display" id="tabelrawat">
-
-                    <thead>
-                        <tr>
+   <thead>
+                        <tr style="text-align:center;">
                             <th>ID</th>
                             <th>ID Rawat</th>
                             <th>ID Tindakan</th>
@@ -31,7 +37,7 @@
 
                     <tbody>
                         <?php foreach ($list as $item) { ?>
-                            <tr>
+                            <tr style="text-align:center;">
                                 <td><?php echo $item['idrawattindakan'] ?></td>
                                 <td><?php echo $item['idrawat'] ?></td>
                                 <td><?php echo $item['idtindakan'] ?></td>
@@ -46,24 +52,143 @@
                         <?php } ?>
                     </tbody>
 
-                </table>
+
+</table>
+
+</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>  
+  
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Chart Rekap Tindakan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
+      <div class="container mt-3">
+   <form action="" method="">
+<div class="form-group row">
+    <div class="col-sm-6">
+    <input type="date" name="startdate" class="form-control" id="startdate">
+                        </div>
+                        <div class="col-sm-6">
+    <input type="date" name="enddate" class="form-control" id="enddate">
+                        </div>
+                        </div>
+  </form>
+  </div>
+  
+  
+      <div class="modal-body">
+         <div class="chart-container">
+    <div class="pie-chart-container">
+      <canvas id="pie-chart"></canvas>
+    </div>
+  </div>
+
+  <!-- javascript -->
+   <script>
+  $(function(){
+      //get the bar chart canvas
+      var cData = JSON.parse(`<?php echo $chart_data; ?>`);
+      var ctx = $("#pie-chart");
+ 
+      //bar chart data
+      var data = {
+        labels: cData.label,
+        datasets: [
+          {
+            label: cData.label,
+            data: cData.data,
+            backgroundColor: [
+              "#DEB887",
+              "#A9A9A9",
+              "#DC143C",
+              "#F4A460",
+              "#2E8B57",
+              "#1D7A46",
+              "#CDA776",
+              "#CDA776",
+              "#989898",
+              "#CB252B",
+              "#E39371",
+            ],
+            borderColor: [
+              "#CDA776",
+              "#989898",
+              "#CB252B",
+              "#E39371",
+              "#1D7A46",
+              "#F4A460",
+              "#CDA776",
+              "#DEB887",
+              "#A9A9A9",
+              "#DC143C",
+              "#F4A460",
+              "#2E8B57",
+            ],
+            borderWidth: [1, 1, 1, 1, 1,1,1,1, 1, 1, 1,1,1]
+          }
+        ]
+      };
+ 
+      //options
+      var options = {
+        responsive: true,
+        title: {
+          display: true,
+          position: "top",
+          text: "Filter Dokter Tindakan by Tanggal",
+          fontSize: 18,
+          fontColor: "#111"
+        },
+        legend: {
+          display: true,
+          position: "bottom",
+          labels: {
+            fontColor: "#333",
+            fontSize: 16
+          }
+        }
+      };
+ 
+      //create bar Chart class object
+      var chart1 = new Chart(ctx, {
+        type: "pie",
+        data: data,
+        options: options
+      });
+ 
+  });
+</script>
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
             </div>
         </div>
     </div>
+
+                                     
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $('#tabelrawat').DataTable({
-            // responsive: true
-        });
-    });
-</script>

@@ -28,8 +28,8 @@
                                     </div>
                                 </div>
                                 <button style="width: 100px; height: 40px;" type="submit" class="btn btn-primary">Submit</button>
-                                <a style="width: 100px; height: 40px;" class="btn btn-sm btn-danger" href="<?php echo base_url('tindakan') ?>"> Back
-                                </a>
+                                <!-- <a style="width: 100px; height: 40px;" class="btn btn-sm btn-danger" href="<?php echo base_url('tindakan') ?>"> Back
+                                </a> -->
                             </form>
                         </div>
                     </div>

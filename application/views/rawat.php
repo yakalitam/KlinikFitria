@@ -22,7 +22,9 @@
             <?php echo $this->session->flashdata('msg_del_rawat'); ?>
 
             <a href="<?= base_url('rawat/tambah_rawat'); ?>" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp Tambah</a>&nbsp
-            <a href="<?= base_url('rawat/rawat_chart'); ?>" type="button" class="btn btn-primary"><i class="fa fa-eye"></i>&nbsp Lihat Chart</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+ <i class="fa fa-eye"></i> Lihat Chart
+</button>
             <hr>
             <thead>
               <tr style="text-align:center;">
@@ -82,6 +84,130 @@
 
 
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Chart Rekap Laporan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="container mt-3">
+   <form action="" method="">
+<div class="form-group row">
+    <div class="col-sm-6">
+    <input type="date" name="startdate" class="form-control" id="startdate">
+                        </div>
+                        <div class="col-sm-6">
+    <input type="date" name="enddate" class="form-control" id="enddate">
+                        </div>
+                        </div>
+  </form>
+  </div>
+  
+      <div class="modal-body">
+         <div class="chart-container">
+    <div class="bar-chart-container">
+      <canvas id="bar-chart"></canvas>
+    </div>
+  </div>
+  <!-- javascript -->
+
+
+   <script>
+  $(function(){
+      //get the bar chart canvas
+      var cData = JSON.parse(`<?php echo $chart_data; ?>`);
+      var ctx = $("#bar-chart");
+ 
+      //bar chart data
+      var data = {
+        labels: cData.label,
+        datasets: [
+          {
+            label: cData.label,
+            data: cData.data,
+            backgroundColor: [
+              "#DEB887",
+              "#A9A9A9",
+              "#DC143C",
+              "#F4A460",
+              "#2E8B57",
+              "#1D7A46",
+              "#CDA776",
+              "#CDA776",
+              "#989898",
+              "#CB252B",
+              "#E39371",
+            ],
+            borderColor: [
+              "#CDA776",
+              "#989898",
+              "#CB252B",
+              "#E39371",
+              "#1D7A46",
+              "#F4A460",
+              "#CDA776",
+              "#DEB887",
+              "#A9A9A9",
+              "#DC143C",
+              "#F4A460",
+              "#2E8B57",
+            ],
+            borderWidth: [1, 1, 1, 1, 1,1,1,1, 1, 1, 1,1,1]
+          }
+        ]
+      };
+ 
+      //options
+      var options = {
+        responsive: true,
+        title: {
+          display: true,
+          position: "top",
+          text: "Rekap Laporan Tabel Rawat by Tanggal",
+          fontSize: 18,
+          fontColor: "#111"
+        },
+        legend: {
+          display: true,
+          position: "bottom",
+          labels: {
+            fontColor: "#333",
+            fontSize: 16
+          }
+        }
+      };
+ 
+      //create bar Chart class object
+      var chart1 = new Chart(ctx, {
+        type: "bar",
+        data: data,
+        options: options
+      });
+ 
+  });
+</script>
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+                                     
+</div>
+
 
 
 <?php $this->load->view('template/footer'); ?>

@@ -15,6 +15,17 @@ public function __construct()
     }
 
  public function index(){
+     $query =  $this->db->query("SELECT COUNT(idrawat) as count, idpasien FROM rawat GROUP BY tglrawat "); 
+      $chart = $query->result();
+      $data = [
+        
+      ];
+// print_r($record); 
+      foreach($chart as $row){
+         $data['label'][] = $row->idpasien;
+        $data['data'][] = (int) $row->count;
+    }
+      $data['chart_data'] = json_encode($data);
         $data['rawat'] = $this->Rawat_model->rawat_pasien();
         $this->load->view('rawat',$data);
     }
@@ -141,17 +152,17 @@ public function __construct()
    }
 
     public function rawat_chart(){
-      $query =  $this->db->query("SELECT COUNT(idrawat) as count, idpasien FROM rawat GROUP BY tglrawat "); 
-      $chart = $query->result();
-      $data = [
+//       $query =  $this->db->query("SELECT COUNT(idrawat) as count, idpasien FROM rawat GROUP BY tglrawat "); 
+//       $chart = $query->result();
+//       $data = [
         
-      ];
-// print_r($record); 
-      foreach($chart as $row){
-         $data['label'][] = $row->idpasien;
-        $data['data'][] = (int) $row->count;
-    }
-      $data['chart_data'] = json_encode($data);
-      $this->load->view('rawat_chart',$data);
+//       ];
+// // print_r($record); 
+//       foreach($chart as $row){
+//          $data['label'][] = $row->idpasien;
+//         $data['data'][] = (int) $row->count;
+//     }
+//       $data['chart_data'] = json_encode($data);
+//       $this->load->view('rawat_chart',$data);
     }
 }
