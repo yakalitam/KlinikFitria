@@ -16,14 +16,14 @@ class Rawat_Tindakan extends CI_Controller
 
     public function index()
     {
-         $query =  $this->db->query("SELECT COUNT(rawattindakan.idtindakan) as count, rawat.idrawat as idrawat FROM rawattindakan,rawat WHERE rawattindakan.idrawat=rawat.idrawat GROUP BY rawattindakan.idtindakan "); 
+         $query =  $this->db->query("SELECT COUNT(rawattindakan.idtindakan) as count, rawattindakan.namadokter as namadokter FROM rawattindakan,rawat WHERE rawattindakan.idrawat=rawat.idrawat GROUP BY rawattindakan.namadokter "); 
       $chart = $query->result();
       $data = [
         
       ];
 // print_r($record); 
       foreach($chart as $row){
-         $data['label'][] = $row->idrawat;
+         $data['label'][] = $row->namadokter;
         $data['data'][] = (int) $row->count;
     }
       $data['chart_data'] = json_encode($data);

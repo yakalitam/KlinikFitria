@@ -79,20 +79,84 @@
         </button>
       </div>
   
+ 
       <div class="container mt-3">
-   <form action="" method="">
+
+   <form action="" method="post">
 <div class="form-group row">
-    <div class="col-sm-6">
-    <input type="date" name="startdate" class="form-control" id="startdate">
+    <div class="col-sm-4">
+    <input type="date" name="fromDate" class="form-control" id="fromDate" value='<?php if(isset($_POST['fromDate'])) echo $_POST['fromDate']; ?>'>
                         </div>
-                        <div class="col-sm-6">
-    <input type="date" name="enddate" class="form-control" id="enddate">
+                        <div class="col-sm-4">
+    <input type="date" name="endDate" class="form-control" id="endDate" value='<?php if(isset($_POST['endDate'])) echo $_POST['endDate']; ?>'>
+                        </div>
+                        <div class="col-sm-4">
+
+                          <input type='submit' name='but_search' value='Search'>
                         </div>
                         </div>
   </form>
   </div>
   
-  
+  <div class="table-responsive">
+     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+       <tr>
+                          <th>ID</th>
+                            <th>ID Rawat</th>
+                            <th>ID Tindakan</th>
+                            <th>Nama Dokter</th>
+                            <th>Biaya</th>
+                            <th>Tanggal</th>
+       </tr>
+
+       <?php
+       $emp_query = "SELECT * FROM rawattindakan WHERE 1";
+
+       // Date filter
+       if(isset($_POST['but_search'])){
+          $fromDate = $_POST['fromDate'];
+          $endDate = $_POST['endDate'];
+
+          if(!empty($fromDate) && !empty($endDate)){
+             $emp_query .= " and add_on 
+                          between '".$fromDate."' and '".$endDate."' ";
+          }
+        }
+
+        // Sort
+        $con = mysqli_connect('localhost', 'root', '','klinikfitria');
+        $emp_query .= " ORDER BY add_on DESC";
+        $employeesRecords = mysqli_query($con,$emp_query);
+
+        // Check records found or not
+        if(mysqli_num_rows($employeesRecords) > 0){
+          while($empRecord = mysqli_fetch_assoc($employeesRecords)){
+            $idrawattindakan = $empRecord['idrawattindakan'];
+            $idrawat = $empRecord['idrawat'];
+            $idtindakan = $empRecord['idtindakan'];
+            $namadokter = $empRecord['namadokter'];
+            $harga = $empRecord['harga'];
+            $add_on = $empRecord['add_on'];
+
+            echo "<tr>";
+            echo "<td>". $idrawattindakan ."</td>";
+            echo "<td>". $idrawat ."</td>";
+            echo "<td>". $idtindakan ."</td>";
+            echo "<td>". $namadokter ."</td>";
+            echo "<td>". $harga ."</td>";
+            echo "<td>". $add_on ."</td>";
+            echo "</tr>";
+            
+          }
+        }else{
+          echo "<tr>";
+          echo "<td colspan='4'>No record found.</td>";
+          echo "</tr>";
+        }
+        ?>
+      </table>
+      </div>
+
       <div class="modal-body">
          <div class="chart-container">
     <div class="pie-chart-container">
