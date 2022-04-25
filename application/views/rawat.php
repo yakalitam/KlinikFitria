@@ -21,7 +21,8 @@
             <?php echo $this->session->flashdata('msg_update_rawat'); ?>
             <?php echo $this->session->flashdata('msg_del_rawat'); ?>
 
-            <a href="<?= base_url('rawat/tambah_rawat'); ?>" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp Tambah</a>
+            <a href="<?= base_url('rawat/tambah_rawat'); ?>" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp Tambah</a>&nbsp
+            <a href="<?= base_url('rawat/rawat_chart'); ?>" type="button" class="btn btn-primary"><i class="fa fa-eye"></i>&nbsp Lihat Chart</a>
             <hr>
             <thead>
               <tr style="text-align:center;">

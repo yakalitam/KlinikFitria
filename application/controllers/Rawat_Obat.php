@@ -118,4 +118,20 @@
         redirect('rawat_obat');
       }
     }
+
+    public function pie_chart() {
+   
+      $query =  $this->db->query("SELECT COUNT(rawatobat.idobat) as count, obat.nama as nama FROM rawatobat,obat WHERE rawatobat.idobat=obat.idobat GROUP BY rawatobat.idobat "); 
+      $record = $query->result();
+      $data = [
+        
+      ];
+// print_r($record); 
+      foreach($record as $row) {
+            $data['label'][] = $row->nama;
+            $data['data'][] = (int) $row->count;
+      }
+      $data['chart_data'] = json_encode($data);
+      $this->load->view('pie_chart',$data);
+    }
   }

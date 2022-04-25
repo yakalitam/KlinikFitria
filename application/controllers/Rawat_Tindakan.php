@@ -62,4 +62,19 @@ class Rawat_Tindakan extends CI_Controller
             redirect(base_url('Rawat_Tindakan'));
         }
     }
+
+    public function dokter_chart(){
+      $query =  $this->db->query("SELECT COUNT(rawattindakan.idtindakan) as count, rawat.idrawat as idrawat FROM rawattindakan,rawat WHERE rawattindakan.idrawat=rawat.idrawat GROUP BY rawattindakan.idtindakan "); 
+      $chart = $query->result();
+      $data = [
+        
+      ];
+// print_r($record); 
+      foreach($chart as $row){
+         $data['label'][] = $row->idrawat;
+        $data['data'][] = (int) $row->count;
+    }
+      $data['chart_data'] = json_encode($data);
+      $this->load->view('dokter_chart',$data);
+    }
 }

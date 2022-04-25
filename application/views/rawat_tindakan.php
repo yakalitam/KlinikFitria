@@ -12,7 +12,8 @@
                 <h5 class="card-title">Halaman Rawat-Tindakan</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Data Tindakan per ID Rawat</h6>
 
-                <hr><a href="<?php echo base_url('Rawat_Tindakan/add') ?>" class="btn btn-primary">Tambah Data Tindakan-Rawat</a>
+                <hr><a href="<?php echo base_url('Rawat_Tindakan/add') ?>" class="btn btn-success">Tambah Data Tindakan-Rawat</a>&nbsp
+                <a href="<?php echo base_url('Rawat_Tindakan/dokter_chart') ?>" class="btn btn-primary"><i class="fa fa-eye"></i>&nbspLihat Chart</a>
                 <hr>
 
                 <table class="display" id="tabelrawat">

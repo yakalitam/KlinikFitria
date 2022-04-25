@@ -18,6 +18,7 @@
         <?php echo $this->session->flashdata('msg_update_rawatobat'); ?>
         <?php echo $this->session->flashdata('msg_del_rawatobat'); ?>
                     <a href="<?= base_url('Rawat_Obat/tambah_rawatobat');?>" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp Tambah</a>
+                    &nbsp <a href="<?= base_url('Rawat_Obat/pie_chart');?>" type="button" class="btn btn-primary"><i class="fa fa-eye"></i>&nbsp Lihat Chart</a>
                   <hr>
                     <thead>
                     <tr style="text-align:center;">
@@ -33,7 +34,9 @@
 
                   <tbody>
           
-          <?php foreach($rawatobat as $row){ ?>
+          <?php $sum=0; 
+          foreach($rawatobat as $row){ 
+            $sum += $row->totalobat; ?>
         <tr style="text-align:center;">
 <td><?php echo $row->idrawatobat?></td>
 <td><?php echo $row->idrawat?></td>
@@ -42,13 +45,14 @@
 <td><?php echo $row->harga?></td>
 <td><?php echo $row->totalobat?></td>
 <td style="text-align:center;">
-    <a href="Rawat_Obat/edit_rawatobat?id=<?php echo htmlspecialchars($row->idrawatobat) ?>" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>&nbsp Edit</a>  
-    <a href="Rawat_Obat/delete_rawatobat?id=<?php echo htmlspecialchars($row->idrawatobat) ?>" title="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa fa-trash"></i>&nbspDelete</a></td>
+  <a href="Rawat_Obat/edit_rawatobat?id=<?php echo htmlspecialchars($row->idrawatobat) ?>" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>&nbsp Edit</a>  
+  <a href="Rawat_Obat/delete_rawatobat?id=<?php echo htmlspecialchars($row->idrawatobat) ?>" title="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa fa-trash"></i>&nbspDelete</a></td>
 </tr>
-         <?php }?>
-                  </tbody>
-                </table>
-              </div>
+<?php }?>
+</tbody>
+</table>
+
+</div>
             </div>
           </div>
 
