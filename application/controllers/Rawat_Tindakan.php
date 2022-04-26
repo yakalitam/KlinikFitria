@@ -45,6 +45,7 @@ class Rawat_Tindakan extends CI_Controller
     public function insert()
     {
         $this->modelRawatTindakan->insert_rawat_tindakan($this->input->post());
+        $this->modelRawatTindakan->update_rawat(($this->input->post()));
         redirect(base_url('rawat_tindakan'));
     }
 
@@ -61,6 +62,7 @@ class Rawat_Tindakan extends CI_Controller
     public function update($id)
     {
         $this->modelRawatTindakan->update_rawat_tindakan(($this->input->post()), $id);
+        
         $this->session->set_flashdata('pesan', 'Data rawat-tindakan berhasil diedit.');
         redirect(base_url('Rawat_Tindakan'));
     }

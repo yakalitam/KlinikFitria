@@ -61,6 +61,8 @@ $this->db->select('*');
     $this->db->update('rawat', $data);
   }
 
+ 
+
   
      //check idobat exist
      public function check_rawat_exists($idrawat)

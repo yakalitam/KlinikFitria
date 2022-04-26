@@ -53,6 +53,11 @@
         'totalobat'     => $totalobat = $jumlah * $harga
       ];
 
+       $data2 = [
+      'totalobat'     => $totalobat
+        ];
+    $update_rawat = $this->RawatObat_model->update_perawatan($idrawat,$data2);
+
       //check id buku sdh ada atau blm
       $rawatobat_exist = $this->RawatObat_model->get_single_row_rawatobat($idrawatobat);
 
@@ -120,6 +125,7 @@
           'harga'     => $harga,
           'totalobat'     => $totalobat = $jumlah * $harga
         ];
+
         $this->RawatObat_model->update_rawatobat($data, $idrawatobat);
         $this->index();
         $this->session->set_flashdata('msg_update_rawatobat', '<div class="alert alert-success alert-dismissible fade show" role="alert">Data Rawat Obat berhasil Diupdate<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');

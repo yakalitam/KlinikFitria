@@ -15,7 +15,7 @@ public function __construct()
     }
 
  public function index(){
-     $query =  $this->db->query("SELECT COUNT(idrawat) as count, idpasien FROM rawat GROUP BY tglrawat "); 
+     $query =  $this->db->query("SELECT COUNT(rawat.idrawat) as count, pasien.idpasien as idpasien FROM rawat,pasien WHERE pasien.idpasien=rawat.idpasien GROUP BY rawat.idrawat "); 
       $chart = $query->result();
       $data = [
         
@@ -26,6 +26,10 @@ public function __construct()
         $data['data'][] = (int) $row->count;
     }
       $data['chart_data'] = json_encode($data);
+      
+        $data['rt'] = $this->modelRawatTindakan->get_totaltindakan();
+        $data['ro'] = $this->RawatObat_model->get_totalobat();
+        // print_r($data['ro']);
         $data['rawat'] = $this->Rawat_model->rawat_pasien();
         $this->load->view('rawat',$data);
     }
@@ -46,8 +50,8 @@ public function __construct()
  public function tambah_rawat_proses(){
     $idrawat = $this->input->post('idrawat');
     $tglrawat = $this->input->post('tglrawat');
-    $totaltindakan = $this->input->post('totaltindakan');
-    $totalobat = $this->input->post('totalobat');
+    $totaltindakan = '0';
+    $totalobat = '0';
     $totalharga = $this->input->post('totalharga');
     $uangmuka = $this->input->post('uangmuka');
     $kurang = $this->input->post('kurang');
@@ -66,6 +70,7 @@ public function __construct()
     ];
     
     
+
     //check id buku sdh ada atau blm
     $rawat_exist = $this->Rawat_model->get_single_row_perawatan($idrawat);
 
@@ -138,6 +143,8 @@ public function __construct()
         'uangmuka'     => $uangmuka,
         'kurang'     => $kurang=$totalharga-$uangmuka
       ];
+
+     
 
 
       $this->Rawat_model->update_rawat($data, $idrawat);

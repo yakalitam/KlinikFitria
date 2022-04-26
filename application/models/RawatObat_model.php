@@ -7,6 +7,21 @@ class RawatObat_model extends CI_Model
      $this->load->database();
  }
 
+  public function update_perawatan($idrawat,$data)
+  {
+     $query = $this->db->get_where('rawat', array('idrawat' => $idrawat));
+     $this->db->set('totalobat', 'totalobat'+$data['totalobat'], FALSE);
+     // $this->db->set('totaltindakan', 'totaltindakan'+$data['totatindakan'], FALSE);
+    $this->db->where('idrawat', $idrawat);
+    $this->db->update('rawat');
+  }
+
+ public function get_totalobat()
+    {
+    $query = $this->db->query("SELECT SUM(rawatobat.totalobat) as count, rawatobat.idrawat as idrawat FROM rawatobat,rawat WHERE rawatobat.idrawat=rawat.idrawat GROUP BY rawatobat.idrawat ");
+    return $query->result();
+    }
+
  public function get_rawatobat()
     {
     $query = $this->db->query("select * from rawatobat");

@@ -47,11 +47,15 @@
                   <td><?php echo $row->idrawat ?></td>
                   <td><?php echo $row->idpasien ?></td>
                   <td><?php echo $row->tglrawat ?></td>
-                  <td><?php echo $row->totaltindakan ?></td>
+                
+                  <td><?php echo $row->totaltindakan?></td>
+
+               
                   <td><?php echo $row->totalobat?></td>
-                  <td style="background-color:blue; color:white;"><?php echo $row->totalharga ?></td>
+                  
+                  <td style="background-color:blue; color:white;"><?php echo $row->totaltindakan+$row->totalobat ?></td>
                   <td><?php echo $row->uangmuka ?></td>
-                  <td style="background-color:red; color:white;"><?php echo $row->kurang ?></td>
+                  <td style="background-color:red; color:white;"><?php echo $row->totaltindakan+$row->totalobat-$row->uangmuka ?></td>
                   <td>
                     <a href="rawat/edit_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>&nbsp Edit</a>
                     <hr> <a href="rawat/delete_rawat?id=<?php echo htmlspecialchars($row->idrawat) ?>" title="delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa fa-trash"></i>&nbspDelete</a>
@@ -97,27 +101,89 @@
       </div>
 
       <div class="container mt-3">
-   <form action="" method="">
+    <form action="" method="post">
 <div class="form-group row">
-    <div class="col-sm-6">
-    <input type="date" name="startdate" class="form-control" id="startdate">
+    <div class="col-sm-4">
+    <input type="date" name="fromDate" class="form-control" id="fromDate" value='<?php if(isset($_POST['fromDate'])) echo $_POST['fromDate']; ?>'>
                         </div>
-                        <div class="col-sm-6">
-    <input type="date" name="enddate" class="form-control" id="enddate">
+                        <div class="col-sm-4">
+    <input type="date" name="endDate" class="form-control" id="endDate" value='<?php if(isset($_POST['endDate'])) echo $_POST['endDate']; ?>'>
+                        </div>
+                        <div class="col-sm-4">
+
+                          <button type='submit' class='btn btn-sm btn-primary' name='but_search' value='Search'><i class="fa fa-search"></i>&nbspSearch</button>
                         </div>
                         </div>
   </form>
   </div>
   
+  <div class="table-responsive">
+     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+       <tr>
+                          <th>ID</th>
+                            <th>ID Pasien</th>
+                            <th>Total Harga</th>
+                            <th>Uang Muka</th>
+                            <th>Kurang</th>
+                            <th>Tanggal</th>
+                                  </tr>
+
+       <?php
+       $emp_query = "SELECT * FROM rawat WHERE 1";
+
+       // Date filter
+       if(isset($_POST['but_search'])){
+          $fromDate = $_POST['fromDate'];
+          $endDate = $_POST['endDate'];
+
+          if(!empty($fromDate) && !empty($endDate)){
+             $emp_query .= " and tanggal 
+                          between '".$fromDate."' and '".$endDate."' ";
+          }
+        }
+
+        // Sort
+        $con = mysqli_connect('localhost', 'root', '','klinikfitria');
+        $emp_query .= " ORDER BY tanggal DESC";
+        $employeesRecords = mysqli_query($con,$emp_query);
+
+        // Check records found or not
+        if(mysqli_num_rows($employeesRecords) > 0){
+          while($empRecord = mysqli_fetch_assoc($employeesRecords)){
+            $idrawat = $empRecord['idrawat'];
+            $idpasien = $empRecord['idpasien'];
+            $totalharga = $empRecord['totalharga'];
+            $uangmuka = $empRecord['uangmuka'];
+            $kurang = $empRecord['kurang'];
+            $tanggal = $empRecord['tanggal'];
+
+            echo "<tr>";
+            echo "<td>". $idrawat ."</td>";
+            echo "<td>". $idpasien ."</td>";
+            echo "<td>". $totalharga ."</td>";
+            echo "<td>". $uangmuka ."</td>";
+            echo "<td>". $kurang ."</td>";
+            echo "<td>". $tanggal ."</td>";
+            echo "</tr>";
+            
+          }
+        }else{
+          echo "<tr>";
+          echo "<td colspan='4'>No record found.</td>";
+          echo "</tr>";
+        }
+        ?>
+      </table>
+      </div>
+
       <div class="modal-body">
          <div class="chart-container">
     <div class="bar-chart-container">
       <canvas id="bar-chart"></canvas>
     </div>
   </div>
+
   <!-- javascript -->
-
-
    <script>
   $(function(){
       //get the bar chart canvas
@@ -169,7 +235,7 @@
         title: {
           display: true,
           position: "top",
-          text: "Rekap Laporan Tabel Rawat by Tanggal",
+          text: "Workload Perawatan by Tanggal",
           fontSize: 18,
           fontColor: "#111"
         },

@@ -40,14 +40,21 @@
                     <div class="col-sm-4">  
                                 <div class="mb-3">
                                     <label for="Total_Tindakan" class="form-label">Total Tindakan</label>
-                                    <input value ="<?php echo htmlspecialchars($rawat->totaltindakan); ?>"type="number" min="0" name="totaltindakan" class="form-control" id="totaltindakan">
+                                    <input value ="<?php echo htmlspecialchars($rawat->totaltindakan); ?>"type="number" min="0" name="totaltindakan" class="form-control" id="totaltindakan" readonly>
                                 </div>
                                 </div>
 
                     <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label for="Total_Obat" class="form-label">Total Obat</label>
-                                    <input value ="<?php echo htmlspecialchars($rawat->totalobat); ?>"type="number" min="0" name="totalobat" class="form-control" id="totalobat">
+                                    <input value ="<?php echo htmlspecialchars($rawat->totalobat); ?>"type="number" min="0" name="totalobat" class="form-control" id="totalobat" readonly>
+                                </div>
+                                </div>
+                   
+                                <div class="col-sm-4">
+                                <div class="mb-3">
+                                    <label for="Total_Harga" class="form-label">Total Harga</label>
+                                    <input value ="<?php echo htmlspecialchars($rawat->totalobat+$rawat->totaltindakan); ?>"type="number" min="0" name="totalharga" class="form-control" id="totalharga" readonly>
                                 </div>
                                 </div>
 

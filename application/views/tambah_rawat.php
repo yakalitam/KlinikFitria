@@ -45,28 +45,28 @@
                                 <br>
                                 <h4 style="color:black">Biaya Perawatan</h4>
                                 
-                                 <div class="form-group row">
+                                 <!-- <div class="form-group row">
                  <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label for="Total_Tindakan" class="form-label">Total Tindakan (Rp)</label>
-                                    <input type="number" min="0" name="totaltindakan" class="form-control" id="totaltindakan">
+                                    <input type="number" min="0" name="totaltindakan" class="form-control" id="totaltindakan" readonly>
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="mb-3">
                                     <label for="Total_Obat" class="form-label">Total Obat (Rp)</label>
-                                    <input type="number" min="0" name="totalobat" class="form-control" id="totalobat">
+                                    <input type="number" min="0" name="totalobat" class="form-control" id="totalobat" readonly>
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-4"> -->
                                 <div class="mb-3">
                                     <label for="Uang_Muka" class="form-label">DP (Rp)</label>
                                     <input type="number" min="0" name="uangmuka" class="form-control" id="uangmuka">
                                 </div>
-                                </div>
-                                </div>
+                                <!-- </div>
+                                </div> -->
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>  
