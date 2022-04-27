@@ -150,7 +150,7 @@
           }
         }else{
           echo "<tr>";
-          echo "<td colspan='4'>No record found.</td>";
+          echo "<td colspan=''>No record found.</td>";
           echo "</tr>";
         }
         ?>

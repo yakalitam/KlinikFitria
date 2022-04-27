@@ -70,9 +70,9 @@
         $pdf->SetFont('Arial','',10);
         $pdf->Cell(0,7,"Total Tindakan (Rp)      :  ".number_format($rawat['totaltindakan'], 0, ".", "."),0,1,'L');
         $pdf->Cell(0,7,"Total Obat (Rp)             :  ".number_format($rawat['totalobat'], 0, ".", "."),0,1,'L');
-        $pdf->Cell(0,7,"Total Harga (Rp)       :  ".number_format($rawat['totalharga'], 0, ".", "."),0,1,'L');
+        $pdf->Cell(0,7,"Total Harga (Rp)       :  ".number_format($rawat['totaltindakan']+$rawat['totalobat'], 0, ".", "."),0,1,'L');
         $pdf->Cell(0,7,"Uang Muka (Rp)       :  ".number_format($rawat['uangmuka'], 0, ".", "."),0,1,'L');
-        $pdf->Cell(0,7,"Kekurangan (Rp)      :  ".number_format($rawat['kurang'], 0, ".", "."),0,1,'L');
+        $pdf->Cell(0,7,"Kekurangan (Rp)      :  ".number_format($rawat['totaltindakan']+$rawat['totalobat']-$rawat['uangmuka'], 0, ".", "."),0,1,'L');
         $pdf->Cell(10,7,'',0,1);
           
 

@@ -139,9 +139,9 @@ public function __construct()
         'tglrawat'     => $tglrawat,
         'totaltindakan'     => $totaltindakan,
         'totalobat'     => $totalobat,
-        'totalharga'     => $totalharga=$totalobat+$totaltindakan,
+        'totalharga'     => $totalobat+$totaltindakan,
         'uangmuka'     => $uangmuka,
-        'kurang'     => $kurang=$totalharga-$uangmuka
+        'kurang'     => $totalobat+$totaltindakan-$uangmuka
       ];
 
      

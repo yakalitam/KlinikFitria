@@ -9,11 +9,14 @@ class RawatObat_model extends CI_Model
 
   public function update_perawatan($idrawat,$data)
   {
-     $query = $this->db->get_where('rawat', array('idrawat' => $idrawat));
-     $this->db->set('totalobat', 'totalobat'+$data['totalobat'], FALSE);
-     // $this->db->set('totaltindakan', 'totaltindakan'+$data['totatindakan'], FALSE);
-    $this->db->where('idrawat', $idrawat);
-    $this->db->update('rawat');
+ 
+       $this->db->get_where('rawat', array('idrawat' => $idrawat));
+        $before = $this->db->get('rawat')->row_array();
+        $after = $before['totalobat']+$data['totalobat'];
+        
+        $this->db->set('totalobat', $after, FALSE);
+        $this->db->where('idrawat', $idrawat);
+        $this->db->update('rawat');
   }
 
  public function get_totalobat()
